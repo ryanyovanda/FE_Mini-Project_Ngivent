@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <>
     <NavBar/>
-    {session?.user.email}
     </>
   )
 }
