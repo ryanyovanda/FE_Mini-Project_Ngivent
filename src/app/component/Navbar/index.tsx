@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import LogoWhite from "/public/ngivent-logo.png";
 import React, { useState } from "react";
-import { useEffect } from "react";
+
 
 
 
