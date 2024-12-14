@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import LogoWhite from "/public/ngivent-logo.png";
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 
@@ -13,13 +12,7 @@ import { useEffect } from "react";
 const NavBar = () => {
     const [isClick, setIsClick] = useState(false);
     const toggleNavbar = () => setIsClick(!isClick);
-    const { data: session } = useSession();
 
-  useEffect(() => {
-    if (session) {
-      console.log(session);
-    }
-  }, [session]);
 
     return (
         <>
@@ -37,7 +30,7 @@ const NavBar = () => {
                                 <Link href="/register/organizer" className="text-white hover:bg-white hover:text-[#232323] rounded-lg p-2 ease-in-out duration-300 transition">Create Event</Link>
                                 <Link href="/login" className="text-white hover:bg-white hover:text-[#232323] rounded-lg p-2 ease-in-out duration-300 transition">Login</Link>
                                 <Link href="/register" className="text-white hover:bg-white hover:text-[#232323] rounded-lg p-2 ease-in-out duration-300 transition">Register</Link>    
-                               <div className="text-[#bebc47]">{session?.user.roles}</div>
+                        
                                </div>                     
                         </div>
                         <button 
