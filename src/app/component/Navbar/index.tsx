@@ -5,7 +5,6 @@ import Image from "next/image";
 import LogoWhite from "/public/ngivent-logo.png";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react";
-import { Session } from "inspector/promises";
 import { useEffect } from "react";
 
 

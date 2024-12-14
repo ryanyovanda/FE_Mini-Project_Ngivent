@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useEffect } from "react";
 import NavBar from "./component/Navbar";
 
