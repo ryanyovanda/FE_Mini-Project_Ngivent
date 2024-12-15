@@ -6,6 +6,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image"; // Import Image component
+import LogoWhite from "/public/ngivent-logo.png"; // Import logo
 
 const schema = z.object({
   email: z.string().email("Invalid email address"),
@@ -57,7 +59,13 @@ const LoginPage: FC = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-[#ededed]">
+    <div className="h-screen flex flex-col items-center justify-center bg-[#ededed]">
+      {/* Logo */}
+      <div className="mb-6">
+        <Image src={LogoWhite} alt="Logo" width={200} height={200} />
+      </div>
+
+      {/* Login Box */}
       <div className="w-[500px] h-fit flex flex-col gap-6 bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-3xl font-bold text-[#132620]">Login</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
