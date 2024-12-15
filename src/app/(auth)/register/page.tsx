@@ -55,6 +55,7 @@ const RegisterPage: FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
+        credentials: "include",
       });
 
       if (!response.ok) {
