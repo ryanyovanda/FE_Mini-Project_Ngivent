@@ -49,23 +49,18 @@ const RegisterPage: FC = () => {
     }
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-          mode: "no-cors", // Added to bypass CORS issues
-        }
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/users/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        credentials: "include",
+      });
 
-      // Response handling is limited with no-cors
       if (!response.ok) {
-        throw new Error(
-          "Request failed. Unable to retrieve response in no-cors mode."
-        );
+        const responseData = await response.json();
+        throw new Error(responseData.message || "An unexpected error occurred");
       }
 
       router.push("/login");
@@ -99,9 +94,7 @@ const RegisterPage: FC = () => {
               className="border border-gray-300 p-3 rounded text-black focus:outline-none focus:ring-2 focus:ring-[#D6AD61]"
             />
             {errors.email && (
-              <span className="text-red-500 text-sm">
-                {errors.email.message}
-              </span>
+              <span className="text-red-500 text-sm">{errors.email.message}</span>
             )}
           </div>
 
@@ -117,9 +110,7 @@ const RegisterPage: FC = () => {
               className="border border-gray-300 p-3 rounded text-black focus:outline-none focus:ring-2 focus:ring-[#D6AD61]"
             />
             {errors.password && (
-              <span className="text-red-500 text-sm">
-                {errors.password.message}
-              </span>
+              <span className="text-red-500 text-sm">{errors.password.message}</span>
             )}
           </div>
 
@@ -135,9 +126,7 @@ const RegisterPage: FC = () => {
               className="border border-gray-300 p-3 rounded text-black focus:outline-none focus:ring-2 focus:ring-[#D6AD61]"
             />
             {errors.confirmPassword && (
-              <span className="text-red-500 text-sm">
-                {errors.confirmPassword.message}
-              </span>
+              <span className="text-red-500 text-sm">{errors.confirmPassword.message}</span>
             )}
           </div>
 
