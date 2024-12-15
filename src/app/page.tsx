@@ -84,6 +84,7 @@ const Home: React.FC = () => {
     <div className="min-h-screen bg-[#ededed]">
       <NavBar />
       <Hero />
+      
 
       {/* Search Bar */}
       <section className="py-4 bg-white shadow-md">
